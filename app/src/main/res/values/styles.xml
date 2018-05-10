@@ -20,7 +20,7 @@
     <style name="AppTheme.MenuImparell">
         <item name="android:background">@color/colorIcon</item>
     </style>
-    <style name="AppTheme.Menufons">
+    <style name="AppTheme.Menufons" parent="AppTheme">
         <item name="android:background">@color/colorPrimary</item>
     </style>
 
