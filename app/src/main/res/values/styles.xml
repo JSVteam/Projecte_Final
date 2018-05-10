@@ -17,4 +17,11 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="AppTheme.MenuImparell">
+        <item name="android:background">@color/colorIcon</item>
+    </style>
+    <style name="AppTheme.Menufons">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
 </resources>
