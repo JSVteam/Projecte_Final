@@ -6,10 +6,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.jordi.project.API.ApiInterface;
+import com.example.jordi.project.API.TVResults;
+import com.example.jordi.project.Constants.Constantes;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
 public class MainActivity extends AppCompatActivity {
 
     Button button;
     Button button2;
+
+    public static int page = 1;
+    public static String Api_Key = "df86154eff229c28b09d4617fe11786d";
+    public static String Language = "en-US";
+    public static String Category = "popular";
 
 
     @Override
@@ -18,6 +35,31 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.button3);
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(Constantes.URL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        ApiInterface interficie = retrofit.create(ApiInterface.class);
+
+        Call<TVResults> Resultats = interficie.getSeries(Category, Api_Key, Language, page);
+
+        Resultats.enqueue(new Callback<TVResults>() {
+            @Override
+            public void onResponse(Call<TVResults> call, Response<TVResults> response) {
+                TVResults series = response.body();
+                List<TVResults.ResultsBean> llistatSeries = series.getResults();
+                TVResults.ResultsBean firstSerie = llistatSeries.get(2);
+
+                button.setText(firstSerie.getFirst_air_date());
+            }
+
+            @Override
+            public void onFailure(Call<TVResults> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
 
 
         button2.setOnClickListener(new View.OnClickListener() {
