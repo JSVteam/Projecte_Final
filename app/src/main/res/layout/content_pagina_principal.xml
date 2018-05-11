@@ -20,7 +20,6 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#E3DAC9"
-        android:contentDescription="https://img.tviso.com/ES/poster/w200/62/cc/62cc37cddf80ff7c958be89ab073f417.jpg "
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

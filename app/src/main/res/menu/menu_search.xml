@@ -5,7 +5,7 @@
     <item android:id="@+id/menuSeach"
         android:title="Search"
         android:icon="@drawable/lupa"
-        app:actionViewClass="android.widget.SearchView"
+        app:actionViewClass="android.support.v7.widget.SearchView"
         app:showAsAction="always"
 
         ></item>
