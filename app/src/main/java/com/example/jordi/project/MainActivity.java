@@ -5,10 +5,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.example.jordi.project.API.ApiInterface;
 import com.example.jordi.project.API.TVResults;
 import com.example.jordi.project.Constants.Constantes;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     public static String Api_Key = "df86154eff229c28b09d4617fe11786d";
     public static String Language = "en-US";
     public static String Category = "popular";
+    public static ImageView imatge;
 
 
     @Override
@@ -35,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.button3);
+
+        imatge = (ImageView) findViewById(R.id.imageLogo) ;
+        String url = "https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png";
+        Picasso.with(this).load(url).into(imatge);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constantes.URL)

@@ -28,7 +28,6 @@
             android:name=".PaginaPrincipal"
             android:label="@string/title_activity_pagina_principal"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>
