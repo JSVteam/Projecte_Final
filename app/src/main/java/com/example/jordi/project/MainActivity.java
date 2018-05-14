@@ -50,9 +50,10 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<TVResults> call, Response<TVResults> response) {
                 TVResults series = response.body();
                 List<TVResults.ResultsBean> llistatSeries = series.getResults();
-                TVResults.ResultsBean firstSerie = llistatSeries.get(2);
+                TVResults.ResultsBean firstSerie = llistatSeries.get(1);
 
                 button.setText(firstSerie.getFirst_air_date());
+                button2.setText(firstSerie.getName());
             }
 
             @Override
