@@ -40,8 +40,8 @@ public class MainActivity extends AppCompatActivity {
         button2 = findViewById(R.id.button3);
 
         imatge = (ImageView) findViewById(R.id.imageLogo) ;
-        String url = "https://cdn.vox-cdn.com/thumbor/AwKSiDyDnwy_qoVdLPyoRPUPo00=/39x0:3111x2048/1400x1400/filters:focal(39x0:3111x2048):format(png)/cdn.vox-cdn.com/uploads/chorus_image/image/49901753/netflixlogo.0.0.png";
-        Picasso.with(this).load(url).into(imatge);
+        //String url = "https://logo.clearbit.com/www.jobs.netflix.com";
+       // Picasso.with(this).load(url).into(imatge);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constantes.URL)
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
                 button.setText(firstSerie.getFirst_air_date());
                 button2.setText(firstSerie.getName());
+                carregarImageURL(Constantes.BASE_URL_IMAGE+firstSerie.getPoster_path(), imatge);
             }
 
             @Override
