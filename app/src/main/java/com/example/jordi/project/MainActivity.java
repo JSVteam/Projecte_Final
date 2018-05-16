@@ -88,4 +88,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void carregarImageURL(String url, ImageView imageView){
+        Picasso.with(this).load(url).into(imageView);
+    }
 }

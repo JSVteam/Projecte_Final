@@ -12,7 +12,7 @@ public class Entrar_Usuari extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_entrar__usuari);
+        setContentView(R.layout.activity_entrar_usuari);
         boto = findViewById(R.id.boto_entrar);
 
 
