@@ -18,7 +18,6 @@ import org.json.JSONObject;
 
 public class Entrar_Usuari extends AppCompatActivity {
 
-    Button boto;
     Button iniciar_sesion;
     EditText email;
     EditText contrasenya;
@@ -27,7 +26,6 @@ public class Entrar_Usuari extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entrar_usuari);
-        boto = findViewById(R.id.boto_entrar);
 
 
         final ProgressDialog progressDialog = new ProgressDialog(this,
@@ -44,13 +42,11 @@ public class Entrar_Usuari extends AppCompatActivity {
                     boolean success = jsonResponse.getBoolean("success");
                     if (success) {
                         sesion_iniciada = true;
-                        //shared_Preferences.setSharedPreferences(getApplicationContext(), sesion_iniciada);
                         Intent intent = new Intent(getApplicationContext(), PaginaPrincipal.class);
                         startActivity(intent);
                         progressDialog.dismiss();
                         progressDialog.hide();
                         finish();
-
 
                     } else {
                         progressDialog.dismiss();
