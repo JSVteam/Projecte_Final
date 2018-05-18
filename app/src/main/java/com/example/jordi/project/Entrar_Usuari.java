@@ -32,7 +32,7 @@ public class Entrar_Usuari extends AppCompatActivity {
                 R.style.Theme_AppCompat_DayNight_Dialog);
         iniciar_sesion = findViewById(R.id.boto_entrar);
         email = findViewById(R.id.tv_email);
-        contrasenya = findViewById(R.id.tv_Contrasenya);
+        contrasenya = findViewById(R.id.tv_password);
 
         final Response.Listener<String> respoListern = new Response.Listener<String>() {
             @Override
