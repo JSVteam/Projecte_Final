@@ -1,9 +1,9 @@
 package com.example.jordi.project;
 
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -46,7 +46,45 @@ public class Registre extends AppCompatActivity {
         boto_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Regist();
+
+                if (nom.getText().toString().length() > 1) {
+                    if (cognoms.getText().toString().length() > 1) {
+                        if (email.getText().toString().length() > 1) {
+                            if (password.getText().toString().length() > 5) {
+                                if (c_password.getText().toString().length() > 5) {
+                                    if (password.equals(c_password)) {
+
+                                        // Crear un objecto de tipo comprobar correo para comprobar si el correo esta registrado o no.
+                                        // Comprobar_email_empleado comprobar_email = new Comprobar_email_empleado(correo.getText().toString(), respoListernEmail);
+                                        // RequestQueue requestEmail = Volley.newRequestQueue(Registre.this);
+                                        // requestEmail.add(comprobar_email);
+                                        Regist();
+
+                                    } else { // las contraseñas no son iguales
+                                        c_password.setError("Las contrasenyes no son iguals");
+                                        c_password.requestFocus();
+                                    }
+                                } else {// repetir contraseña
+                                    c_password.setError("Repeteix la contrasenya");
+                                    c_password.requestFocus();
+
+                                }
+                            } else { // La contraseña tiene menos de 6 caracteres
+                                password.setError("Introduir una constrasenya valida");
+                                password.requestFocus();
+                            }
+                        } else {// Correo
+                            email.setError("Introduir un Email");
+                            email.requestFocus();
+                        }
+                    } else {//apellidos
+                        cognoms.setError("Introduir els Cognoms");
+                        cognoms.requestFocus();
+                    }
+                } else {// Nombre
+                    nom.setError("Introduir el Nom");
+                    nom.requestFocus();
+                }
             }
         });
     }
@@ -59,10 +97,13 @@ public class Registre extends AppCompatActivity {
         final String email = this.email.getText().toString().trim();
         final String contrasenya = this.password.getText().toString().trim();
 
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_RESISTRAR,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String succes = jsonObject.getString("success");
@@ -102,7 +143,6 @@ public class Registre extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
-
     }
 
 
