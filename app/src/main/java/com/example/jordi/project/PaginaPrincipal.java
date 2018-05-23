@@ -1,11 +1,9 @@
 package com.example.jordi.project;
 
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.widget.SearchView;
 import android.view.MenuInflater;
 import android.view.View;
@@ -17,30 +15,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
 
 
 public class PaginaPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    private static final String message = "http://80.211.40.68/ProjecteFinal/nom_cognoms.php";
+    TextView mytext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pagina_principal);
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -72,6 +67,13 @@ public class PaginaPrincipal extends AppCompatActivity
         MenuItem item = menu.findItem(R.id.menuSeach);
         SearchView searchView = (SearchView) item.getActionView();
 
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
+        View view = navigationView.getHeaderView(0);
+
+        mytext = view.findViewById(R.id.nom_cognoms);
+
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -95,24 +97,35 @@ public class PaginaPrincipal extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            Toast.makeText(getApplicationContext(),"Home Seleccionat",Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_gallery) {
-            Toast.makeText(getApplicationContext(),"Series Seleccionat",Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_slideshow) {
-           Intent pagina_settings = new Intent(PaginaPrincipal.this , Registre.class);
-           startActivity(pagina_settings);
+        if (id == R.id.nav_home) {
+            Toast.makeText(getApplicationContext(), "Home Seleccionat", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_series) {
+            Toast.makeText(getApplicationContext(), "Series Seleccionat", Toast.LENGTH_SHORT).show();
+        } else if (id == R.id.nav_settings) {
 
-        } else if (id == R.id.nav_manage) {
 
-            shared_Preferences.setSharedPreferences(getApplicationContext(),false);
-            Intent logout = new Intent(getApplicationContext(),MainActivity.class);
+            Intent pagina_settings = new Intent(PaginaPrincipal.this, Configuracio.class);
+            startActivity(pagina_settings);
+
+        } else if (id == R.id.nav_logout) {
+
+            shared_Preferences.setSharedPreferences(getApplicationContext(), false);
+            Intent logout = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(logout);
-            finish();            //getApplicationContext().finish();
+            finish();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    public void Mostrar_Usuari(){
+
+
+    }
+
 }
+
+

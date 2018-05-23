@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.jordi.project">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -28,6 +28,9 @@
             android:name=".PaginaPrincipal"
             android:label="@string/title_activity_pagina_principal"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Configuracio"
+            android:label="@string/title_activity_configuracio"></activity>
     </application>
 
 </manifest>
