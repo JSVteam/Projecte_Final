@@ -22,6 +22,7 @@ public class Entrar_Usuari extends AppCompatActivity {
     EditText email;
     EditText contrasenya;
     Boolean sesion_iniciada = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,6 +1,8 @@
 package com.example.jordi.project;
 
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -31,11 +33,14 @@ public class Registre extends AppCompatActivity {
     private ProgressBar loading;
     private static String URL_RESISTRAR = "http://80.211.40.68/ProjecteFinal/registrar.php";
 
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registre);
 
+        final ProgressDialog progressDialog = new ProgressDialog(this,
+                R.style.Theme_AppCompat_DayNight_Dialog);
         nom = findViewById(R.id.edit_nom);
         cognoms = findViewById(R.id.edit_cognoms);
         email = findViewById(R.id.edit_email);
@@ -43,7 +48,47 @@ public class Registre extends AppCompatActivity {
         c_password = findViewById(R.id.edit_c_password);
         boto_registrar = findViewById(R.id.boto_registrarse);
 
+        final Response.Listener<String> respoListern = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) { // Para guardar los datos del usuario.
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    if (success) {
+                        Intent intent = new Intent(Registre.this, PaginaPrincipal.class);
+                        startActivity(intent);
+                    } else {
+                        Toast.makeText(Registre.this, "Error", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
+        final Response.Listener<String> respoListernEmail = new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) { // La comprobacion del correo
+                try {
+                    JSONObject jsonResponse = new JSONObject(response);
+                    boolean success = jsonResponse.getBoolean("success");
+                    if (success) {
+
+                        email.setError("Este e-mail ya esta registrado");
+                        email.requestFocus();
+                    } else {
+
+                        Regist();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+
         boto_registrar.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
 
@@ -55,10 +100,10 @@ public class Registre extends AppCompatActivity {
                                     if (password.equals(c_password)) {
 
                                         // Crear un objecto de tipo comprobar correo para comprobar si el correo esta registrado o no.
-                                        // Comprobar_email_empleado comprobar_email = new Comprobar_email_empleado(correo.getText().toString(), respoListernEmail);
-                                        // RequestQueue requestEmail = Volley.newRequestQueue(Registre.this);
-                                        // requestEmail.add(comprobar_email);
-                                        Regist();
+                                        Comprovar_Email comprobar_email = new Comprovar_Email(email.getText().toString(), respoListernEmail);
+                                        RequestQueue requestEmail = Volley.newRequestQueue(Registre.this);
+                                        requestEmail.add(comprobar_email);
+
 
                                     } else { // las contraseñas no son iguales
                                         c_password.setError("Las contrasenyes no son iguals");
