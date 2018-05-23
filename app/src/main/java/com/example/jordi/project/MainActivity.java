@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
         button = findViewById(R.id.button);
         button2 = findViewById(R.id.button3);
 
-        imatge = (ImageView) findViewById(R.id.imageLogo) ;
+        imatge = (ImageView) findViewById(R.id.imageLogo);
         //String url = "https://logo.clearbit.com/www.jobs.netflix.com";
-       // Picasso.with(this).load(url).into(imatge);
+        // Picasso.with(this).load(url).into(imatge);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constantes.URL)
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
                 button.setText(firstSerie.getFirst_air_date());
                 button2.setText(firstSerie.getName());
-                carregarImageURL(Constantes.BASE_URL_IMAGE+firstSerie.getPoster_path(), imatge);
+                carregarImageURL(Constantes.BASE_URL_IMAGE + firstSerie.getPoster_path(), imatge);
             }
 
             @Override
@@ -70,26 +70,33 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        if (shared_Preferences.getSharedPreferences(this)) {
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent2 = new Intent(MainActivity.this , Entrar_Usuari.class);
-                startActivity(intent2);
-            }
-        });
+            Intent intent = new Intent(getApplicationContext(), PaginaPrincipal.class);
+            startActivity(intent);
+            finish();
+        } else {
+
+
+            button2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent2 = new Intent(MainActivity.this, Entrar_Usuari.class);
+                    startActivity(intent2);
+                }
+            });
 
 //Hola
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, Registre.class);
-                startActivity(intent);
+            button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this, Registre.class);
+                    startActivity(intent);
 
-            }
-        });
+                }
+            });
+        }
     }
-
     public void carregarImageURL(String url, ImageView imageView){
         Picasso.with(this).load(url).into(imageView);
     }

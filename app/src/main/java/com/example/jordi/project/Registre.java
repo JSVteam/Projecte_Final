@@ -88,7 +88,6 @@ public class Registre extends AppCompatActivity {
 
         boto_registrar.setOnClickListener(new View.OnClickListener() {
 
-
             @Override
             public void onClick(View v) {
 
@@ -97,7 +96,8 @@ public class Registre extends AppCompatActivity {
                         if (email.getText().toString().length() > 1) {
                             if (password.getText().toString().length() > 5) {
                                 if (c_password.getText().toString().length() > 5) {
-                                    if (password.equals(c_password)) {
+
+                                    if (password.getText().toString().equals(c_password.getText().toString())) {
 
                                         // Crear un objecto de tipo comprobar correo para comprobar si el correo esta registrado o no.
                                         Comprovar_Email comprobar_email = new Comprovar_Email(email.getText().toString(), respoListernEmail);
