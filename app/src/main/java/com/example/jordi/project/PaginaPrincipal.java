@@ -1,23 +1,22 @@
 package com.example.jordi.project;
 
 
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
-import android.view.MenuInflater;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 
 public class PaginaPrincipal extends AppCompatActivity
@@ -34,7 +33,6 @@ public class PaginaPrincipal extends AppCompatActivity
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -95,33 +93,42 @@ public class PaginaPrincipal extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
+
+        android.support.v4.app.Fragment fragment = null;
+
         int id = item.getItemId();
 
-        if (id == R.id.nav_home) {
-            Toast.makeText(getApplicationContext(), "Home Seleccionat", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_series) {
-            Toast.makeText(getApplicationContext(), "Series Seleccionat", Toast.LENGTH_SHORT).show();
-        } else if (id == R.id.nav_settings) {
-
-
-            Intent pagina_settings = new Intent(PaginaPrincipal.this, Configuracio.class);
-            startActivity(pagina_settings);
-
-        } else if (id == R.id.nav_logout) {
+        if (id == R.id.nav_logout) {
 
             shared_Preferences.setSharedPreferences(getApplicationContext(), false);
             Intent logout = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(logout);
             finish();
+        } else if (id == R.id.nav_series) {
+            fragment = new Menu_Series();
+        } else if (id == R.id.nav_settings) {
+            fragment = new Menu_Configuracio();
+        } else if (id == R.id.nav_home) {
+            //fragment = new Menu_Home();
         }
 
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction ft = fragmentManager.beginTransaction();
+
+            ft.replace(R.id.content_main, fragment);
+
+            ft.commit();
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
-    public void Mostrar_Usuari(){
+
+    public void Mostrar_Usuari() {
 
 
     }
