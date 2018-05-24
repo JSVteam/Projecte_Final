@@ -8,15 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.jordi.project.R;
-
 public class Menu_Configuracio extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        getActivity().setTitle("Configuracio");
+        getActivity().setTitle("Configuració");
     }
 
     @Nullable
@@ -24,4 +22,8 @@ public class Menu_Configuracio extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.menu_configuracio,  null);
     }
+
+
+
+
 }
