@@ -10,8 +10,18 @@
         android:layout_height="38dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="29dp"
+        android:layout_marginTop="101dp"
         android:text="Notificacions"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/textview_email"
+        android:layout_width="332dp"
+        android:layout_height="38dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:text="TextView"
         android:textSize="18sp" />
 
 

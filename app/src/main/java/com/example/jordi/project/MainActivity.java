@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (shared_Preferences.getSharedPreferences(this)) {
 
-            Intent intent = new Intent(getApplicationContext(), PaginaPrincipal.class);
+            Intent intent = new Intent(getApplicationContext(), Contingut_PaginaPrincipal.class);
             startActivity(intent);
             finish();
         } else {

@@ -51,7 +51,7 @@ public class Entrar_Usuari extends AppCompatActivity {
                         if (success) {
                             sesion_iniciada = true;
                             shared_Preferences.setSharedPreferences(getApplicationContext(),sesion_iniciada);
-                            Intent intent = new Intent(getApplicationContext(), PaginaPrincipal.class);
+                            Intent intent = new Intent(getApplicationContext(), Contingut_PaginaPrincipal.class);
                             startActivity(intent);
                             progressDialog.dismiss();
                             progressDialog.hide();

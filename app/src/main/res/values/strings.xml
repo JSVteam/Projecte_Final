@@ -80,4 +80,5 @@
 
     <string name="pref_title_vibrate">Vibrate</string>
     <string name="title_activity_configuracio">Configuració</string>
+    <string name="title_activity_contingut_pagina_principal">Contingut pagina principal</string>
 </resources>

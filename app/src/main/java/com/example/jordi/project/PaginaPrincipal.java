@@ -18,6 +18,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.loopj.android.http.AsyncHttpClient;
+import com.loopj.android.http.AsyncHttpResponseHandler;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+
 
 public class PaginaPrincipal extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -43,6 +49,8 @@ public class PaginaPrincipal extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Mostrar_Usuari();
 
     }
 
@@ -109,18 +117,19 @@ public class PaginaPrincipal extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             fragment = new Menu_Configuracio();
         } else if (id == R.id.nav_home) {
-            //fragment = new Menu_Home();
+            Intent pagina_principal = new Intent(getApplicationContext(), PaginaPrincipal.class);
+            startActivity(pagina_principal);
         }
 
 
-        if (fragment != null) {
+        /*if (fragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             FragmentTransaction ft = fragmentManager.beginTransaction();
 
             ft.replace(R.id.content_main, fragment);
 
             ft.commit();
-        }
+        }*/
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -130,6 +139,34 @@ public class PaginaPrincipal extends AppCompatActivity
 
     public void Mostrar_Usuari() {
 
+        AsyncHttpClient client = new AsyncHttpClient();
+        client.get("http://80.211.40.68/ProjecteFinal/nom_cognoms.php?id=", new AsyncHttpResponseHandler() {
+            @Override
+            public void onSuccess(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody) {
+                if (statusCode == 200) {
+                    try {
+                        JSONArray jsonArray = new JSONArray(new String(responseBody));
+                        String apellido;
+                        String nombre;
+
+
+                            apellido = jsonArray.getJSONObject(0).getString("cognom");
+                            nombre = jsonArray.getJSONObject(0).getString("nom");
+
+                        mytext.setText(nombre+" "+apellido);
+
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(int statusCode, cz.msebera.android.httpclient.Header[] headers, byte[] responseBody, Throwable error) {
+
+            }
+        });
 
     }
 
