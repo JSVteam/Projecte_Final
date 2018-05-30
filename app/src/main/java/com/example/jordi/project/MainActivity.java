@@ -22,27 +22,31 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button button;
-    Button button2;
+    Button boto_entrar;
+    Button boto_registrarse;
 
+
+    /*
     public static int page = 1;
     public static String Api_Key = "df86154eff229c28b09d4617fe11786d";
     public static String Language = "en-US";
     public static String Category = "popular";
-    public static ImageView imatge;
+    public static ImageView imatge; */
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.button);
-        button2 = findViewById(R.id.button3);
+        boto_entrar = findViewById(R.id.boto_entrar);
+        boto_registrarse = findViewById(R.id.boto_registrarse);
 
-        imatge = (ImageView) findViewById(R.id.imageLogo);
+        //imatge = (ImageView) findViewById(R.id.imageLogo);
         //String url = "https://logo.clearbit.com/www.jobs.netflix.com";
         // Picasso.with(this).load(url).into(imatge);
 
+
+        /*
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(Constantes.URL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -70,15 +74,19 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        if (shared_Preferences.getSharedPreferences(this)) {
+        */
 
+
+        if (shared_Preferences.getSharedPreferences(this)) {
+            //Si true,  inicia directament a Pagina Principal
             Intent intent = new Intent(getApplicationContext(), PaginaPrincipal.class);
             startActivity(intent);
             finish();
         } else {
 
+            //Si no, inicia Entrar Usuari
 
-            button2.setOnClickListener(new View.OnClickListener() {
+            boto_entrar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent2 = new Intent(MainActivity.this, Entrar_Usuari.class);
@@ -86,8 +94,9 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
-//Hola
-            button.setOnClickListener(new View.OnClickListener() {
+
+
+            boto_registrarse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(MainActivity.this, Registre.class);
@@ -97,7 +106,9 @@ public class MainActivity extends AppCompatActivity {
             });
         }
     }
+
+    /*
     public void carregarImageURL(String url, ImageView imageView){
         Picasso.with(this).load(url).into(imageView);
-    }
+    }*/
 }

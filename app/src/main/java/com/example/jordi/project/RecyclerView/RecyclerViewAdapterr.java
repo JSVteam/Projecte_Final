@@ -25,17 +25,12 @@ import java.util.List;
 
 public class RecyclerViewAdapterr extends RecyclerView.Adapter<RecyclerViewAdapterr.MyViewHolder> {
 
+    //Declaracio objectes
     private Context mContext;
     private List<Serie> mSerie;
-/*
-    public RecyclerViewAdapterr(Context mContext, List<TVResults.ResultsBean> mResultados) {
-        this.mContext = mContext;
-        this.mResultados = mResultados;
+    ///////////////////////////////
 
-        Log.d("PRUEBA", "JAJAJA tontoooo");
-    }
-    */
-
+    //Constructor
     public RecyclerViewAdapterr(Context mContext, List<Serie> mSerie) {
         this.mContext = mContext;
         this.mSerie = mSerie;
@@ -53,13 +48,17 @@ public class RecyclerViewAdapterr extends RecyclerView.Adapter<RecyclerViewAdapt
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-       // holder.titulo_serie.setText(mSerie.get(position).getSerieTitol());
+
+        //Obtenim el contingut de l'arraylist. En aquest cas nomes la portada
         holder.imagen_serie.setImageResource(mSerie.get(position).getPortada());
 
+
+        //Quan fan click a la cardview
         holder.targeta_series.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                //Crea un nou intent, i obte les dades del Arraylist i els posa una paraula clau per diferenciar-ho
                 Intent intent = new Intent(mContext, Contingut_Series.class);
                 intent.putExtra("Titol", mSerie.get(position).getSerieTitol());
                 intent.putExtra("Descripcio", mSerie.get(position).getDesc());
@@ -69,6 +68,7 @@ public class RecyclerViewAdapterr extends RecyclerView.Adapter<RecyclerViewAdapt
 
                 mContext.startActivity(intent);
 
+                //////////////////////////////////////
             }
         });
 
@@ -84,20 +84,23 @@ public class RecyclerViewAdapterr extends RecyclerView.Adapter<RecyclerViewAdapt
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
 
+        //Declaracio d'objectes
         TextView titulo_serie;
         ImageView imagen_serie;
         CardView targeta_series;
         TextView num_seasons;
         TextView num_episodes;
+        ////////////////////////////
 
         public MyViewHolder(View itemView) {
             super(itemView);
 
-            //titulo_serie = (TextView) itemView.findViewById(R.id.targeta_text);
+            //Assignem els objectes
             imagen_serie = (ImageView) itemView.findViewById(R.id.targeta_img);
             targeta_series = (CardView) itemView.findViewById(R.id.targeta_id);
             num_seasons = (TextView) itemView.findViewById(R.id.TextView_Seasons);
             num_episodes = (TextView) itemView.findViewById(R.id.TextView_Capitols);
+            /////////////////////////////////////////////////////////////////////////////
         }
     }
 }

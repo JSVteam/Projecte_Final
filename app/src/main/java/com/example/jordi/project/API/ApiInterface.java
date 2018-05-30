@@ -7,6 +7,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
+
+//Creem una interficie per recuperar  les dades de la API
 public interface ApiInterface {
     @GET("/3/tv/{category}")
     Call<TVResults> getSeries(

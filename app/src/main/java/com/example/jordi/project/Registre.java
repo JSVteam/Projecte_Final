@@ -31,6 +31,8 @@ public class Registre extends AppCompatActivity {
     private EditText nom, cognoms, email, password, c_password;
     private Button boto_registrar;
     private ProgressBar loading;
+
+    //Declarem aquest String al qual aquesta url que esta en el nostre servidor , ens permet poder registrar-se.
     private static String URL_RESISTRAR = "http://80.211.40.68/ProjecteFinal/registrar.php";
 
 
@@ -50,7 +52,7 @@ public class Registre extends AppCompatActivity {
 
         final Response.Listener<String> respoListern = new Response.Listener<String>() {
             @Override
-            public void onResponse(String response) { // Para guardar los datos del usuario.
+            public void onResponse(String response) { // Para guardar les dades del usuari.
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
@@ -68,7 +70,7 @@ public class Registre extends AppCompatActivity {
 
         final Response.Listener<String> respoListernEmail = new Response.Listener<String>() {
             @Override
-            public void onResponse(String response) { // La comprobacion del correo
+            public void onResponse(String response) { // Comprovem que el correo.
                 try {
                     JSONObject jsonResponse = new JSONObject(response);
                     boolean success = jsonResponse.getBoolean("success");
@@ -105,28 +107,28 @@ public class Registre extends AppCompatActivity {
                                         requestEmail.add(comprobar_email);
 
 
-                                    } else { // las contraseñas no son iguales
+                                    } else { // les contrasenyes no son iguals.
                                         c_password.setError("Las contrasenyes no son iguals");
                                         c_password.requestFocus();
                                     }
-                                } else {// repetir contraseña
+                                } else {// reptir contrasenya.
                                     c_password.setError("Repeteix la contrasenya");
                                     c_password.requestFocus();
 
                                 }
-                            } else { // La contraseña tiene menos de 6 caracteres
+                            } else { // La contrasenya té menys de 5 caracters.
                                 password.setError("Introduir una constrasenya valida");
                                 password.requestFocus();
                             }
-                        } else {// Correo
+                        } else {// Correu
                             email.setError("Introduir un Email");
                             email.requestFocus();
                         }
-                    } else {//apellidos
+                    } else {//Cognoms
                         cognoms.setError("Introduir els Cognoms");
                         cognoms.requestFocus();
                     }
-                } else {// Nombre
+                } else {// Nom
                     nom.setError("Introduir el Nom");
                     nom.requestFocus();
                 }
@@ -134,8 +136,8 @@ public class Registre extends AppCompatActivity {
         });
     }
 
+    // Aquest és el metode que farà servir per registrar-se
     private void Regist() {
-        //boto_registrar.setVisibility(View.GONE);
 
         final String nom = this.nom.getText().toString().trim();
         final String cognoms = this.cognoms.getText().toString().trim();
@@ -160,7 +162,6 @@ public class Registre extends AppCompatActivity {
                         } catch (JSONException e) {
                             e.printStackTrace();
                             Toast.makeText(Registre.this, "Register Error!" + e.toString(), Toast.LENGTH_SHORT).show();
-                            //boto_registrar.setVisibility(View.VISIBLE);
                         }
 
                     }
@@ -169,7 +170,6 @@ public class Registre extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(Registre.this, "Register Error!" + error.toString(), Toast.LENGTH_SHORT).show();
-                        //boto_registrar.setVisibility(View.VISIBLE);
                     }
                 })
 

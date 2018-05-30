@@ -49,8 +49,11 @@ public class Entrar_Usuari extends AppCompatActivity {
                         JSONObject jsonResponse = new JSONObject(response);
                         boolean success = jsonResponse.getBoolean("success");
                         if (success) {
+                            //Si true..
                             sesion_iniciada = true;
+                            //Guardar l'estat en el shared preferences
                             shared_Preferences.setSharedPreferences(getApplicationContext(),sesion_iniciada);
+                            //Declarar l'intent i iniciar Pagina Principal
                             Intent intent = new Intent(getApplicationContext(), PaginaPrincipal.class);
                             startActivity(intent);
                             progressDialog.dismiss();
@@ -58,6 +61,7 @@ public class Entrar_Usuari extends AppCompatActivity {
                             finish();
 
                         } else {
+                            //Si false, mostrar un Toast informant que no s'ha pogut iniciar sessió
                             progressDialog.dismiss();
                             progressDialog.hide();
                             Toast.makeText(getApplicationContext(), "No se ha podido iniciar sesión", Toast.LENGTH_SHORT).show();
@@ -73,7 +77,7 @@ public class Entrar_Usuari extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
 
-                    // Crear un objecto de tipo inicar sesion con los datos introducido.
+                    // Crear un objecte de tipus Login amb les dades introduies.
                     Login iniciar_sesion = new Login(email.getText().toString(), contrasenya.getText().toString(), respoListern);
                     RequestQueue requestQueue = Volley.newRequestQueue(Entrar_Usuari.this);
                     requestQueue.add(iniciar_sesion);

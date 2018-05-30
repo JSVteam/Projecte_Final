@@ -6,6 +6,7 @@ package com.example.jordi.project.RecyclerView;
 
 public class Serie {
 
+    //Declaracio variables
     private int SerieID;
     private String SerieTitol;
     private String Desc;
@@ -13,10 +14,12 @@ public class Serie {
     private int num_episodes;
     private int portada;
     private int puntuacio;
+    ////////////////////////////
 
     public Serie() {
     }
 
+    //Constructor
     public Serie(int serieID, String serieTitol, String desc, int num_seasons, int num_episodes, int portada, int puntuacio) {
         SerieID = serieID;
         SerieTitol = serieTitol;
@@ -26,7 +29,9 @@ public class Serie {
         this.portada = portada;
         this.puntuacio = puntuacio;
     }
+    //////////////////////////////////////////
 
+    //Gets
     public Serie(int serieID) {
         SerieID = serieID;
     }
@@ -58,4 +63,7 @@ public class Serie {
     public int getPuntuacio() {
         return puntuacio;
     }
+    /////////////////////////////////////////////////////
+
+
 }

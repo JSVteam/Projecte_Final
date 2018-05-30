@@ -9,6 +9,8 @@ import java.util.Map;
 
 public class Login extends StringRequest {
 
+    //Aquest metode serveix per poder fer el Login desde la Base de dades
+
     private static final String Iniciar_sesion_URI = "http://80.211.40.68/ProjecteFinal/iniciar_sesion.php";
     private Map<String, String> params;
 

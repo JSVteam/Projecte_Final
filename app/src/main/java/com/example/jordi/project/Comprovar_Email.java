@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class Comprovar_Email extends StringRequest {
 
+    //En aquest metode el fem servir per comprovar que l'email que introduim al Login exisiteixi a la Base de dades
     private static final String Comprovar_email = "http://80.211.40.68/ProjecteFinal/comprovar_email.php";
     private Map<String, String> params;
 
