@@ -57,6 +57,7 @@ public class Contingut_Series extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
 
 
+
        // titol_contigut_serie = (TextView) findViewById(R.id.Titol_contingut_serie);
         portada_contigut_serie = (ImageView) findViewById(R.id.portada_contigut_serie);
         num_seasons = (TextView) findViewById(R.id.TextView_Seasons);
@@ -71,14 +72,11 @@ public class Contingut_Series extends AppCompatActivity {
 
 
 
-
         //titol_contigut_serie.setText(Titol);
         descripcio_contingut_serie.setText(Descripcio);
         portada_contigut_serie.setImageResource(portada);
         num_seasons.setText(String.valueOf(seasons));
         num_episodes.setText(String.valueOf(capitols));
-
-
 
 
     }

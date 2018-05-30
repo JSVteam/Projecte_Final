@@ -34,7 +34,8 @@
         <activity
             android:name=".Contingut_PaginaPrincipal"
             android:label="@string/title_activity_contingut_pagina_principal" />
-        <activity android:name=".Contingut_Series"></activity>
+        <activity android:name=".Contingut_Series" />
+
 
     </application>
 

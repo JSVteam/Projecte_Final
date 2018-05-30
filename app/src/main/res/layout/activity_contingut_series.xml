@@ -96,20 +96,15 @@
                 android:id="@+id/boto_mes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="108dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/colorPrimary"
+                android:background="@drawable/boto_mostrar_mes"
                 android:text="Mostrar Més"
-                android:textColor="@color/colorText" />
+                android:textColor="@color/colorText"
+                />
 
             <ImageButton
                 android:id="@+id/boto_afegir"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_gravity="left"
                 android:layout_weight="10"
                 android:background="@drawable/add"
