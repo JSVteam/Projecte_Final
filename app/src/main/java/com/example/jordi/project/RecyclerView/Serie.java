@@ -13,14 +13,14 @@ public class Serie {
     private int num_seasons;
     private int num_episodes;
     private int portada;
-    private int puntuacio;
+    private double puntuacio;
     ////////////////////////////
 
     public Serie() {
     }
 
     //Constructor
-    public Serie(int serieID, String serieTitol, String desc, int num_seasons, int num_episodes, int portada, int puntuacio) {
+    public Serie(int serieID, String serieTitol, String desc, int num_seasons, int num_episodes, int portada, double puntuacio) {
         SerieID = serieID;
         SerieTitol = serieTitol;
         Desc = desc;
@@ -60,7 +60,7 @@ public class Serie {
         return portada;
     }
 
-    public int getPuntuacio() {
+    public double getPuntuacio() {
         return puntuacio;
     }
     /////////////////////////////////////////////////////

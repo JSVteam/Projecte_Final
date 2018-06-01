@@ -1,17 +1,24 @@
 package com.example.jordi.project;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toolbar;
+import android.support.v7.widget.Toolbar;
+import android.widget.Toast;
 
 import at.blogc.android.views.ExpandableTextView;
 
@@ -20,9 +27,13 @@ public class Contingut_Series extends AppCompatActivity {
     //Declaracio variables
 
     private static final String TAG = "ExpandableTextView";
-    private TextView titol_contigut_serie, num_seasons, num_episodes;
+    private TextView num_seasons, num_episodes;
     private ImageView portada_contigut_serie;
     Button mostrarmés;
+    Toolbar titol_contigut_serie;
+    RatingBar ratingBar;
+    TextView puntuacio;
+
     /////////////////////////////////////////////////////////////////
 
     @Override
@@ -31,9 +42,19 @@ public class Contingut_Series extends AppCompatActivity {
         setContentView(R.layout.activity_contingut_series);
         mostrarmés = (Button) findViewById(R.id.boto_mes);
 
+        ratingBar = (RatingBar) findViewById(R.id.ratingBar_puntuacio);
+        puntuacio = (TextView) findViewById(R.id.textview_puntuacio);
 
-        //android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
+        ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+            @Override
+            public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
+
+               // Toast.makeText(Contingut_Series.this,"Starts:" + ratingBar.getRating(),Toast.LENGTH_SHORT).show();
+                puntuacio.setText(String.valueOf(ratingBar.getRating()));
+            }
+        });
+
+
 
         final ExpandableTextView descripcio_contingut_serie = findViewById(R.id.Descripcio_contingut_serie);
 
@@ -86,8 +107,11 @@ public class Contingut_Series extends AppCompatActivity {
         portada_contigut_serie.setImageResource(portada);
         num_seasons.setText(String.valueOf(seasons));
         num_episodes.setText(String.valueOf(capitols));
+
         ////////////////////////////////////////////////////////////////
 
+        Toolbar titol_contigut_serie = findViewById(R.id.toolbar);
+        getSupportActionBar().setTitle(Titol);
 
     }
 

@@ -17,6 +17,7 @@ import com.example.jordi.project.Contingut_Series;
 import com.example.jordi.project.R;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,6 +66,7 @@ public class RecyclerViewAdapterr extends RecyclerView.Adapter<RecyclerViewAdapt
                 intent.putExtra("Portada", mSerie.get(position).getPortada());
                 intent.putExtra("Temporades",mSerie.get(position).getNum_seasons());
                 intent.putExtra("Capitols",mSerie.get(position).getNum_episodes());
+                intent.putExtra("Puntuacio",mSerie.get(position).getPuntuacio());
 
                 mContext.startActivity(intent);
 
@@ -72,14 +74,13 @@ public class RecyclerViewAdapterr extends RecyclerView.Adapter<RecyclerViewAdapt
             }
         });
 
-
-
     }
 
     @Override
     public int getItemCount() {
         return mSerie.size();
     }
+
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -90,6 +91,7 @@ public class RecyclerViewAdapterr extends RecyclerView.Adapter<RecyclerViewAdapt
         CardView targeta_series;
         TextView num_seasons;
         TextView num_episodes;
+        TextView puntuacio;
         ////////////////////////////
 
         public MyViewHolder(View itemView) {
@@ -100,7 +102,15 @@ public class RecyclerViewAdapterr extends RecyclerView.Adapter<RecyclerViewAdapt
             targeta_series = (CardView) itemView.findViewById(R.id.targeta_id);
             num_seasons = (TextView) itemView.findViewById(R.id.TextView_Seasons);
             num_episodes = (TextView) itemView.findViewById(R.id.TextView_Capitols);
+            puntuacio = (TextView) itemView.findViewById(R.id.textview_puntuacio);
             /////////////////////////////////////////////////////////////////////////////
         }
+    }
+
+    public void updateList(List<Serie> llistatseries){
+
+        mSerie = new ArrayList<>();
+        mSerie.addAll(llistatseries);
+        notifyDataSetChanged();
     }
 }

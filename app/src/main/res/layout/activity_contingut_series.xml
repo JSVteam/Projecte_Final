@@ -38,7 +38,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Temporades Totals:"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -47,15 +47,15 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <TextView
                     android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
+                    android:layout_weight="0"
                     android:text="Capitols per Temporada:"
-                    android:textSize="18sp"
+                    android:textSize="16sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -64,16 +64,43 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="TextView"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/textview_nota"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Puntuació:"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textview_puntuacio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="0.0"
                     android:textSize="18sp" />
 
             </LinearLayout>
+
+            <RatingBar
+                android:id="@+id/ratingBar_puntuacio"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:isIndicator="false"
+                android:numStars="5" />
 
             <TextView
                 android:id="@+id/TextView_Sinopsis"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Sinopsis"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <at.blogc.android.views.ExpandableTextView
@@ -96,25 +123,25 @@
                 android:id="@+id/boto_mes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="12"
                 android:background="@drawable/boto_mostrar_mes"
                 android:text="Mostrar Més"
-                android:textColor="@color/colorText"
-                />
+                android:textColor="@color/colorText" />
 
             <ImageButton
                 android:id="@+id/boto_afegir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
-                android:layout_weight="10"
-                android:background="@drawable/add"
-                app:srcCompat="@drawable/add" />
+                android:layout_weight="1"
+                android:background="@drawable/add" />
 
             <TextView
                 android:id="@+id/textView_afegir"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="left"
+                android:layout_weight="1"
                 android:text="Afegir"
                 android:textColor="@color/colorIcon"
                 android:textSize="18sp" />

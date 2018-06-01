@@ -29,7 +29,7 @@ public class Contingut_PaginaPrincipal extends AppCompatActivity
     public static String Language = "en-US";
     public static String Category = "popular";
     //private TVResults series;
-    List<Serie> primeraSerie;
+    ArrayList<Serie> primeraSerie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,8 +97,8 @@ public class Contingut_PaginaPrincipal extends AppCompatActivity
             finish();
         } else if (id == R.id.nav_series) {
             fragment = new Menu_Series();
-        } else if (id == R.id.nav_settings) {
-            fragment = new Menu_Configuracio();
+            /* } else if (id == R.id.nav_settings) {
+            fragment = new Menu_Configuracio();*/
         } else if (id == R.id.nav_home) {
             Intent pagina_principal = new Intent(getApplicationContext(), PaginaPrincipal.class);
             startActivity(pagina_principal);
