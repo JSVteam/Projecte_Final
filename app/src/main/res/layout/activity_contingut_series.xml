@@ -7,6 +7,8 @@
     android:background="@color/colorMenu"
     tools:context="com.example.jordi.project.Contingut_Series">
 
+
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

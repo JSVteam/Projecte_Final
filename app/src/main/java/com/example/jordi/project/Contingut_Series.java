@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.DrawableContainer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ public class Contingut_Series extends AppCompatActivity {
     Toolbar titol_contigut_serie;
     RatingBar ratingBar;
     TextView puntuacio;
+    ImageButton afegir;
 
     /////////////////////////////////////////////////////////////////
 
@@ -45,16 +47,29 @@ public class Contingut_Series extends AppCompatActivity {
         ratingBar = (RatingBar) findViewById(R.id.ratingBar_puntuacio);
         puntuacio = (TextView) findViewById(R.id.textview_puntuacio);
 
+        tornar_enrrere();
+
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
-               // Toast.makeText(Contingut_Series.this,"Starts:" + ratingBar.getRating(),Toast.LENGTH_SHORT).show();
+
                 puntuacio.setText(String.valueOf(ratingBar.getRating()));
+
+
             }
         });
 
 
+        afegir = (ImageButton) findViewById(R.id.boto_afegir);
+        afegir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                //Toast.makeText(Contingut_Series.this,"Starts:" + ratingBar.getRating(),Toast.LENGTH_SHORT).show();
+
+            }
+        });
 
         final ExpandableTextView descripcio_contingut_serie = findViewById(R.id.Descripcio_contingut_serie);
 
@@ -113,6 +128,13 @@ public class Contingut_Series extends AppCompatActivity {
         Toolbar titol_contigut_serie = findViewById(R.id.toolbar);
         getSupportActionBar().setTitle(Titol);
 
+    }
+
+    public void tornar_enrrere(){
+        android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        if(actionBar != null){
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
 }

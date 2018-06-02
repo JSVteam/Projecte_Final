@@ -1,6 +1,7 @@
 package com.example.jordi.project;
 
 
+import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -195,6 +196,7 @@ public class PaginaPrincipal extends AppCompatActivity
         adapter.updateList(novalista);
         return true;
     }
+
 
  /*private void filter(String text){
         ArrayList<Serie> series = new ArrayList<>();

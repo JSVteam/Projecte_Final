@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="475dp"
+    android:orientation="vertical"
+    android:background="@color/cardview_dark_background"
+    android:layout_gravity="center"
+    >
+
+
+    <TextView
+        android:id="@+id/cerrar_popup"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="end"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/backgroundcirculo"
+        android:gravity="center"
+        android:text="X"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/titulo_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:text="Terminos y condiciones de uso"
+        android:textAlignment="textStart"
+        android:textColor="#FFFFFF"
+        android:textSize="22dp" />
+
+    <ScrollView
+        android:id="@+id/scrollView_popup"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/texto_popup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="@string/lorem_Ipsum"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF" />
+    </ScrollView>
+
+
+</LinearLayout>

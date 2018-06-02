@@ -1,15 +1,22 @@
 package com.example.jordi.project;
 
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,6 +38,9 @@ public class Registre extends AppCompatActivity {
     private EditText nom, cognoms, email, password, c_password;
     private Button boto_registrar;
     private ProgressBar loading;
+    private CheckBox acceptar_condicions;
+    private Dialog popup;
+    private TextView textView_politica;
 
     //Declarem aquest String al qual aquesta url que esta en el nostre servidor , ens permet poder registrar-se.
     private static String URL_RESISTRAR = "http://80.211.40.68/ProjecteFinal/registrar.php";
@@ -49,6 +59,17 @@ public class Registre extends AppCompatActivity {
         password = findViewById(R.id.edit_password);
         c_password = findViewById(R.id.edit_c_password);
         boto_registrar = findViewById(R.id.boto_registrarse);
+        textView_politica = findViewById(R.id.textview_condicions);
+        popup = new Dialog(this);
+
+        subrayar_Texto(textView_politica);
+
+        textView_politica.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MostrarPopup();
+            }
+        });
 
         final Response.Listener<String> respoListern = new Response.Listener<String>() {
             @Override
@@ -157,6 +178,8 @@ public class Registre extends AppCompatActivity {
 
                             if (succes.equals("1")) {
                                 Toast.makeText(Registre.this, "Register Success!", Toast.LENGTH_SHORT).show();
+                                Intent accedir_usuari = new Intent(getApplicationContext(), Entrar_Usuari.class);
+                                startActivity(accedir_usuari);
                             }
 
                         } catch (JSONException e) {
@@ -190,5 +213,31 @@ public class Registre extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
+
+    public void MostrarPopup() {
+        TextView cerrarpopup, titulopopup;
+        popup.setContentView(R.layout.layout_ventana_popup);
+        cerrarpopup = popup.findViewById(R.id.cerrar_popup);
+        titulopopup = popup.findViewById(R.id.titulo_popup);
+        subrayar_Texto(titulopopup);
+
+
+        cerrarpopup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popup.dismiss();
+            }
+        });
+
+        popup.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        popup.show();
+    }
+
+    public void subrayar_Texto(TextView texto) {
+        SpannableString subrayado = new SpannableString(texto.getText());
+        subrayado.setSpan(new UnderlineSpan(), 0, subrayado.length(), 0);
+        texto.setText(subrayado);
+
+    }
 
 }
