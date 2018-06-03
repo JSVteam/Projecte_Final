@@ -66,7 +66,7 @@ public class Contingut_Series extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                //Toast.makeText(Contingut_Series.this,"Starts:" + ratingBar.getRating(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(Contingut_Series.this,"Botó no implementat" ,Toast.LENGTH_SHORT).show();
 
             }
         });
